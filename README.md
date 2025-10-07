@@ -24,6 +24,22 @@ Archetype for AI tools to create SPA web applications using Angular:
 
 Repository: [Laboratorios / Angular](https://github.com/AlbertoBasaloLabs/Angular)
 
+```bash
+# Create a new Angular project
+# name: angular
+# minimal: true (to avoid any testing framework)
+# inline-template: true
+# inline-style: true
+# routing: true
+# ssr: false
+# style: css
+# zoneless: true
+
+
+ng new angular --minimal -s -t --routing --ssr=false --style=css --zoneless
+ng serve
+```
+
 ---
 
 - **Author**: [Alberto Basalo](https://albertobasalo.dev)
