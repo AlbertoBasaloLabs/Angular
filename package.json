@@ -1,0 +1,40 @@
+{
+  "name": "c0-angular-spa",
+  "version": "1.0.0",
+  "author": {
+    "name": "Alberto Basalo",
+    "company": "AI code Academy",
+    "website": "https://aicode.academy",
+    "email": "albertobasalo@aicode.academy"
+  },
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "dev": "npm run chrome && ng serve",
+    "chrome": "start chrome -incognito -auto-open-devtools-for-tabs http://localhost:4200",
+    "watch": "ng build --watch --configuration development",
+    "format": "prettier --write \"src/**/*.{ts,html,css}\"",
+    "update": "ng update"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/common": "^20.3.3",
+    "@angular/compiler": "^20.3.3",
+    "@angular/core": "^20.3.3",
+    "@angular/forms": "^20.3.3",
+    "@angular/platform-browser": "^20.3.3",
+    "@angular/platform-browser-dynamic": "^20.3.3",
+    "@angular/router": "^20.3.3",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^20.3.4",
+    "@angular/cli": "^20.3.4",
+    "@angular/compiler-cli": "^20.3.3",
+    "typescript": "~5.8.3",
+    "prettier": "^3.6.2"
+  }
+}
