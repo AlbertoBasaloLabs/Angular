@@ -8,9 +8,9 @@ import { UserStore } from "./user.store";
   imports: [PageComponent, JsonPipe],
   template: `
     <app-page title="User">
-      <h1>User: {{ userId() }}</h1>
+      <h1>User Email: {{ userEmail() }}</h1>
       @if (user()) {
-        <h2>User: {{ user() | json }}</h2>
+        <h2>User Data: {{ user() | json }}</h2>
       } @else {
         <h2>User not found</h2>
       }
@@ -19,8 +19,8 @@ import { UserStore } from "./user.store";
   `,
 })
 export default class UserPage {
-  //http://localhost:4200/user;id=89.1;name=alb;email=a@b.c
-  public userId = input<string>();
+  //http://localhost:4200/user/a@b.c
+  public userEmail = input<string>();
   private userStore = inject(UserStore);
   private router = inject(Router);
   protected user = this.userStore.user;

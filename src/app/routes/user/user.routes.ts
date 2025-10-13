@@ -14,7 +14,7 @@ export const USER_ROUTES: Routes = [
     loadComponent: () => import("./reset-password.page"),
   },
   {
-    path: ":userId",
+    path: ":userEmail",
     loadComponent: () => import("./user-id/user.page"),
   },
 ];

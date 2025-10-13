@@ -15,6 +15,7 @@ import { logFakeInterceptor } from "./core/log-fake.interceptor";
 import { provideEnv, withData } from "./shared/env/env.token";
 import { GlobalStore } from "./shared/global/global.store";
 import { LogService } from "./shared/log/log.service";
+import { usersFakeInterceptor } from "./core/users-fake.interceptor";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -37,7 +38,7 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([
         authInterceptor,
         cacheInterceptor,
-        //usersFakeInterceptor,
+        usersFakeInterceptor,
         logFakeInterceptor,
       ])
     ),
