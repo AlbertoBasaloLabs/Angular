@@ -8,6 +8,10 @@ import { RegisterStoreService } from "./register.service";
   imports: [RegisterForm, PageComponent, RouterLink],
   template: `
     <app-page title="Register your account">
+      
+      <a routerLink="/user/login"
+        >Go to login if you already have an account</a
+      >
       <app-register-form (register)="onRegister($event)" />
       <footer>
         @if (failed()) {
@@ -15,9 +19,6 @@ import { RegisterStoreService } from "./register.service";
             <input [value]="failed()" aria-invalid="true" readonly>
           </section>
         }
-        <a routerLink="/user/login"
-          >Go to login if you already have an account</a
-        >
       </footer>
     </app-page>
   `,

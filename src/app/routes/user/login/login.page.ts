@@ -9,6 +9,9 @@ import { LoginStoreService } from "./login.service";
   imports: [LoginForm, PageComponent, RouterLink],
   template: `
     <app-page title="Login to your account">
+      <a routerLink="/user/register"
+        >Go to register if you don't have an account</a
+      >
       <app-login-form (login)="onLogin($event)" />
       <footer>
         @if (failed()) {
@@ -16,9 +19,6 @@ import { LoginStoreService } from "./login.service";
             <input name="failure" [value]="failed()" aria-invalid="true" readonly />
           </section>
         }
-        <a routerLink="/user/register"
-          >Go to register if you don't have an account</a
-        >
       </footer>
     </app-page>
   `,

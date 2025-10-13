@@ -8,14 +8,14 @@ import { FormGroup } from "@angular/forms";
   template: `
       @if (form().invalid) {
     <section id="errors">
-        <p>Review the form for errors:</p>
+        <p>Review this errors:</p>
         @for (control of form().controls | keyvalue; track control.key) {
           <ul>
             @let errors = control.value.errors;
             @if (errors) {
               <li>
                 {{ control.key }}
-                <p>{{ errors | json }}</p>
+                <small>{{ errors | json }}</small>
               </li>
             }
           </ul>

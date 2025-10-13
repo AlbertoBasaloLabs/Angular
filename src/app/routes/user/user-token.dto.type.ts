@@ -1,8 +1,9 @@
+export type UserDto = {
+  id: string;
+  email: string;
+  name: string;
+}
 export type UserTokenDto = {
-  user: {
-    id: string;
-    email: string;
-    name: string;
-  };
+  user: UserDto;
   token: string;
 };
