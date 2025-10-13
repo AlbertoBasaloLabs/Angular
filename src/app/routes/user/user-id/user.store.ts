@@ -2,9 +2,7 @@ import { httpResource } from "@angular/common/http";
 import { computed, inject, Injectable } from "@angular/core";
 import { GlobalStore } from "../../../shared/global/global.store";
 
-@Injectable({
-  providedIn: "root",
-})
+@Injectable()
 export class UserStore {
   private globalStore = inject(GlobalStore);
   private url = "http://localhost:3000/users/me";
@@ -12,7 +10,6 @@ export class UserStore {
   public user = computed(() => this.userMe.value());
 
   public logout() {
-    this.globalStore.changeUser(undefined);
-    this.globalStore.changeToken(undefined);
+    this.globalStore.changeUserToken(undefined);
   }
 }

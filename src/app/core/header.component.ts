@@ -14,10 +14,10 @@ import { ThemeToggleComponent } from "./theme-toggle.component";
         <ul>
           <a [routerLink]="['']" class="logo color">Angular Archetype</a>
         </ul>
-        <ul>
+        <ul id="userNav">
           @if (isLoggedIn()) {
             <li>
-              <a [routerLink]="['user', user()]">User</a>
+              <a [routerLink]="['user', email()]">User</a>
             </li>
           } @else {
             <li>
@@ -37,5 +37,5 @@ export class HeaderComponent {
   protected env: Env = inject(ENV);
   private globalStore = inject(GlobalStore);
   protected isLoggedIn = computed(() => !!this.globalStore.user());
-  protected user = this.globalStore.user;
+  protected email = computed(() => this.globalStore.user()?.email || "user");
 }

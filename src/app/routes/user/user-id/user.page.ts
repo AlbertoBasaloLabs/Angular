@@ -6,6 +6,7 @@ import { UserStore } from "./user.store";
 
 @Component({
   imports: [PageComponent, JsonPipe],
+  providers: [UserStore],
   template: `
     <app-page title="User">
       <h1>User Email: {{ userEmail() }}</h1>

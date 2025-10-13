@@ -10,6 +10,7 @@ import {
 } from "@angular/core";
 import { CacheService } from "../cache.service";
 import { defaultGlobalState, GlobalState } from "./global.type";
+import { UserDto, UserTokenDto } from "./user-token.dto.type";
 
 @Injectable({
   providedIn: "root",
@@ -32,24 +33,20 @@ export class GlobalStore {
     () => this.state().ip || "127.0.0.1",
   );
 
-  public readonly user: Signal<string | undefined> = computed(
-    () => this.state().user,
+  public readonly user: Signal<UserDto | undefined> = computed(
+    () => this.state().userToken?.user,
   );
 
   public readonly token: Signal<string | undefined> = computed(
-    () => this.state().token,
+    () => this.state().userToken?.token,
   );
 
   public changeTheme(theme: string): void {
     this.state.update((state) => ({ ...state, theme }));
   }
 
-  public changeUser(user: string | undefined): void {
-    this.state.update((state) => ({ ...state, user }));
-  }
-
-  public changeToken(token: string | undefined): void {
-    this.state.update((state) => ({ ...state, token }));
+  public changeUserToken(userToken: UserTokenDto | undefined): void {
+    this.state.update((state) => ({ ...state, userToken }));
   }
 
   public changeIp(ip: string): void {

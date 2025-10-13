@@ -2,7 +2,7 @@ import { HttpInterceptorFn, HttpResponse } from "@angular/common/http";
 import { of } from "rxjs";
 import { RegisterDto } from "../routes/user/register/register-dto.type";
 import { LoginDto } from "../routes/user/login/login-dto.type";
-import { UserDto } from "../routes/user/user-token.dto.type";
+import { UserDto } from "../shared/global/user-token.dto.type";
 
 export const usersFakeInterceptor: HttpInterceptorFn = (req, next) => {
   if (!req.url.includes("users") ) {

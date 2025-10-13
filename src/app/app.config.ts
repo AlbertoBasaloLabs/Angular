@@ -38,7 +38,7 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([
         authInterceptor,
         cacheInterceptor,
-        usersFakeInterceptor,
+        //usersFakeInterceptor,
         logFakeInterceptor,
       ])
     ),

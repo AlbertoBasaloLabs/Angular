@@ -1,13 +1,13 @@
+import { UserTokenDto } from "./user-token.dto.type";
+
 export type GlobalState = {
-  user: string | undefined;
-  token: string | undefined;
+  userToken: UserTokenDto | undefined;
   theme: string;
   ip: string | undefined;
 };
 
 export const defaultGlobalState: GlobalState = {
-  user: undefined,
-  token: undefined,
+  userToken: undefined,
   theme: "light",
   ip: undefined,
 };

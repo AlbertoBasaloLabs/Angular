@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { effect, inject, Injectable, Signal, signal } from "@angular/core";
 import { GlobalStore } from "../../../shared/global/global.store";
-import { UserTokenDto } from "../user-token.dto.type";
+import { UserTokenDto } from "../../../shared/global/user-token.dto.type";
 import { LoginDto } from "./login-dto.type";
 
 @Injectable({
@@ -17,9 +17,9 @@ export class LoginStoreService {
 
   private userTokenEffect = effect(() => {
     const userToken = this.userToken();
+    console.log("LoginStoreService - userToken changed", userToken);
     if (!userToken) return;
-    this.globalStore.changeToken(userToken.token);
-    this.globalStore.changeUser(userToken.user.email);
+    this.globalStore.changeUserToken(userToken);
   });
 
   public error: Signal<string | undefined> = this.loginError.asReadonly();
@@ -29,7 +29,7 @@ export class LoginStoreService {
     this.loginError.set(undefined);
     this.http.post<UserTokenDto>(this.url, loginDto).subscribe({
       next: (userToken) => this.userToken.set(userToken),
-      error: (error) => this.loginError.set(error.message),
+      error: (error) => this.loginError.set(error.message.replace(this.url, "")),
     });
   }
 }
