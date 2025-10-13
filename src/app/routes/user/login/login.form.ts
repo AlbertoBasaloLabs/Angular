@@ -7,6 +7,7 @@ import {
 } from "@angular/forms";
 import { FormErrorsComponent } from "../../../shared/form-errors.component";
 import { LoginDto } from "./login-dto.type";
+import { showInvalid } from "../../../shared/form.utils";
 
 @Component({
   selector: "app-login-form",
@@ -33,7 +34,9 @@ import { LoginDto } from "./login-dto.type";
       <button type="reset" class="secondary outline" (click)="onReset()">
         Reset
       </button>
-      <app-form-errors [form]="form" />
+       @if (form.invalid) {
+        <app-form-errors [form]="form" />
+       }
     </form>
   `,
 })
@@ -48,10 +51,7 @@ export class LoginForm {
   });
 
   protected isInvalid(controlName: string): boolean | undefined {
-    const control = this.form.get(controlName);
-    if (!control) return undefined;
-    if (control.pristine) return undefined;
-    return control.invalid;
+    return showInvalid(controlName, this.form);
   }
 
   protected onLoginClick(): void {

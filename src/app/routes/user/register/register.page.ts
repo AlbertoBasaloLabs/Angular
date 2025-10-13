@@ -10,8 +10,10 @@ import { RegisterStoreService } from "./register.service";
     <app-page title="Register your account">
       <app-register-form (register)="onRegister($event)" />
       <footer>
-        @if (error()) {
-          <p>{{ error() }}</p>
+        @if (failed()) {
+          <section id="failed">
+            <input [value]="failed()" aria-invalid="true" readonly>
+          </section>
         }
         <a routerLink="/user/login"
           >Go to login if you already have an account</a
@@ -23,7 +25,7 @@ import { RegisterStoreService } from "./register.service";
 export default class RegisterPage {
   private registerStore = inject(RegisterStoreService);
   private router = inject(Router);
-  protected error: Signal<string | undefined> = this.registerStore.error;
+  protected failed: Signal<string | undefined> = this.registerStore.error;
 
   private userToken = this.registerStore.userToken;
 

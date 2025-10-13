@@ -6,8 +6,8 @@ import { FormGroup } from "@angular/forms";
   selector: "app-form-errors",
   imports: [KeyValuePipe, JsonPipe],
   template: `
-    <section>
       @if (form().invalid) {
+    <section id="errors">
         <p>Review the form for errors:</p>
         @for (control of form().controls | keyvalue; track control.key) {
           <ul>
@@ -22,8 +22,8 @@ import { FormGroup } from "@angular/forms";
         } @empty {
           <p>No errors</p>
         }
-      }
-    </section>
+      </section>
+    }
   `,
 })
 export class FormErrorsComponent {

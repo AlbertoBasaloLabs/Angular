@@ -8,6 +8,7 @@ import {
 import { FormErrorsComponent } from "../../../shared/form-errors.component";
 import { mustMatchValidator, passwordValidator } from "./password.validator";
 import { RegisterDto } from "./register-dto.type";
+import { showInvalid } from "../../../shared/form.utils";
 
 @Component({
   selector: "app-register-form",
@@ -62,7 +63,9 @@ import { RegisterDto } from "./register-dto.type";
       <button type="reset" class="secondary outline" (click)="onReset()">
         Reset
       </button>
-      <app-form-errors [form]="form" />
+       @if (form.invalid) {
+        <app-form-errors [form]="form" />
+       }
     </form>
   `,
 })
@@ -85,14 +88,11 @@ export class RegisterForm {
     },
     {
       validators: [mustMatchValidator("password", "password2")],
-    },
+    }
   );
 
   protected isInvalid(controlName: string): boolean | undefined {
-    const control = this.form.get(controlName);
-    if (!control) return undefined;
-    if (control.pristine) return undefined;
-    return control.invalid;
+    return showInvalid(controlName, this.form);
   }
 
   protected onRegisterClick(): void {

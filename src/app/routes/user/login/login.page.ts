@@ -11,8 +11,10 @@ import { LoginStoreService } from "./login.service";
     <app-page title="Login to your account">
       <app-login-form (login)="onLogin($event)" />
       <footer>
-        @if (error()) {
-          <p>{{ error() }}</p>
+        @if (failed()) {
+          <section id="failed">
+            <input name="failure" [value]="failed()" aria-invalid="true" readonly />
+          </section>
         }
         <a routerLink="/user/register"
           >Go to register if you don't have an account</a
@@ -24,7 +26,7 @@ import { LoginStoreService } from "./login.service";
 export default class LoginPage {
   private loginStore = inject(LoginStoreService);
   private router = inject(Router);
-  protected error: Signal<string | undefined> = this.loginStore.error;
+  protected failed: Signal<string | undefined> = this.loginStore.error;
 
   private userToken = this.loginStore.userToken;
 
